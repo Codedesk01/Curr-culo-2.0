@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -10,11 +9,12 @@
   <meta name="author" content="CodeDesk">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.geradorcurriculo.com/create-resume">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="icon" href="Logo.png" type="image/x-icon">
   <meta name="google-adsense-account" content="ca-pub-8530320176723847">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17173526751"></script>
@@ -36,59 +36,200 @@
   
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530320176723847"
      crossorigin="anonymous"></script>
-  
-  
-   <link rel="icon" href="Logo.png" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
+    }
+    .navbar {
+      background: linear-gradient(90deg, #0f172a, #1e40af);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      position:fixed;
+    }
+    .navbar-brand, .nav-link {
+      color: #e2e8f0 !important;
+      transition: color 0.3s;
+    }
+    .nav-link:hover {
+      color: #38bdf8 !important;
+    }
+    .form-section {
+      padding: 80px 0;
+      min-height: 100vh;
+    }
+    .form-control, .form-select {
+      border-radius: 10px;
+      background: #1e293b;
+      color: #e2e8f0;
+      border: 1px solid #475569;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+      background: #1e293b;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #38bdf8, #1e40af);
+      border: none;
+      border-radius: 10px;
+      padding: 12px 24px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+    }
+    .btn-outline-primary {
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+    .btn-outline-primary:hover {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+    .btn-outline-danger {
+      border-color: #ef4444;
+      color: #ef4444;
+    }
+    .btn-outline-danger:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+    .resume-preview {
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+      background: #1e293b;
+      color: #e2e8f0;
+    }
+    .resume-preview.zoom {
+      transform: scale(1.1);
+    }
+    .tips-panel {
+      background: #1e293b;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      color: #e2e8f0;
+      transition: all 0.3s;
+    }
+    .progress-bar {
+      background: linear-gradient(90deg, #14b8a6, #38bdf8);
+      transition: width 0.5s ease-in-out;
+
+    }
+    .scroll-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      z-index: 1000;
+      background: #38bdf8;
+    }
+    .scroll-top.show {
+      display: block;
+    }
+    .footer-section {
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    .modal-content {
+      border-radius: 15px;
+      background: #1e293b;
+      color: #e2e8f0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      position:fixed;
+    }
+    #star-rating i {
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #94a3b8;
+      transition: color 0.3s;
+    }
+    #star-rating i.selected {
+      color: #facc15;
+      animation: starPulse 0.5s ease;
+    }
+    @keyframes starPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .achievement {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #14b8a6;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      z-index: 1000;
+      display: none;
+      animation: slideIn 0.5s ease, fadeOut 0.5s ease 3s forwards;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; }
+    }
+    .achievement.show {
+      display: block;
+    }
+    .animate-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .animate-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #doacao {
+      background: linear-gradient(135deg, #0f172a, #1e40af);
+      border-radius: 15px;
+      padding: 40px 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    #doacao a {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .form-text, .invalid-feedback {
+      color: #94a3b8;
+    }
+    .is-valid {
+      border-color: #14b8a6 !important;
+      box-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
+    }
+    .is-invalid {
+      border-color: #ef4444 !important;
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    }
+    
+  </style>
 </head>
 <body>
+  
+
 <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKZHK9G6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) --
-<!-- Modal HTML -->
-<div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="feedbackModalLabel">Avalie sua experiência</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-      </div>
-      <div class="modal-body">
-        <form id="feedbackForm">
-  <div class="mb-3">
-    <label for="username" class="form-label">Seu nome ou e-mail:</label>
-    <input type="text" class="form-control" id="username" placeholder="Digite aqui" required>
-  </div>
+  <!-- End Google Tag Manager (noscript) -->
 
-  <div class="mb-3">
-    <label class="form-label">Sua nota:</label>
-    <div id="star-rating">
-      <i class="bi bi-star" data-value="1"></i>
-      <i class="bi bi-star" data-value="2"></i>
-      <i class="bi bi-star" data-value="3"></i>
-      <i class="bi bi-star" data-value="4"></i>
-      <i class="bi bi-star" data-value="5"></i>
-    </div>
-    <input type="hidden" id="rating" required>
-  </div>
-
-  <div class="mb-3">
-    <label for="comment" class="form-label">Comentário:</label>
-    <textarea class="form-control" id="comment" rows="3" placeholder="Compartilhe sua opinião"></textarea>
-  </div>
-
-  <div class="text-end">
-    <button type="submit" class="btn btn-primary">Enviar Avaliação E Gerar PDF</button>
-  </div>
-</form>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-  
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <div class="container">
+<!--
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    
       <a class="navbar-brand fw-bold" href="index.html">Gerador de Currículo</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -98,51 +239,111 @@
           <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">Sobre</a></li>
           <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-          
           <li class="nav-item"><a class="nav-link" href="contact.html">Contato</a></li>
           <li class="nav-item"><a class="nav-link btn btn-warning ms-2 px-4" href="create-resume.html">Criar Currículo</a></li>
         </ul>
       </div>
-    </div>
+    
   </nav>
-  
-   
+-->
+  <!-- Achievement Notification -->
+  <div id="achievement" class="achievement">
+    <i class="bi bi-trophy"></i> Conquista desbloqueada: <span id="achievementText"></span>
+  </div>
 
-  <section class="form-section ">
+  <!-- Modal HTML -->
+  <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="feedbackModalLabel">Avalie sua experiência 🌟</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="feedbackForm">
+            <div class="mb-3">
+              <label for="username" class="form-label">Seu nome ou e-mail:</label>
+              <input type="text" class="form-control" id="username" placeholder="Digite aqui" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Sua nota:</label>
+              <div id="star-rating">
+                <i class="bi bi-star" data-value="1"></i>
+                <i class="bi bi-star" data-value="2"></i>
+                <i class="bi bi-star" data-value="3"></i>
+                <i class="bi bi-star" data-value="4"></i>
+                <i class="bi bi-star" data-value="5"></i>
+              </div>
+              <input type="hidden" id="rating" required>
+            </div>
+            <div class="mb-3">
+              <label for="comment" class="form-label">Comentário:</label>
+              <textarea class="form-control" id="comment" rows="3" placeholder="Compartilhe sua opinião"></textarea>
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-primary">Enviar Avaliação 🚀</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tutorial Modal -->
+  <div class="modal fade" id="tutorialModal" tabindex="-1" aria-labelledby="tutorialModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="tutorialModalLabel">Bem-vindo ao Gerador de Currículo! 🎉</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <p>Crie seu currículo em minutos com nosso guia passo a passo:</p>
+          <ul>
+            <li>Escolha um modelo ideal para sua vaga.</li>
+            <li>Preencha seus dados pessoais e profissionais.</li>
+            <li>Personalize o estilo e veja a pré-visualização em tempo real.</li>
+            <li>Baixe seu currículo em PDF e conquiste sua vaga! 🚀</li>
+          </ul>
+          <p>Ganhe <strong>conquistas</strong> ao completar cada etapa!</p>
+          <div class="text-end">
+            <button class="btn btn-primary" data-bs-dismiss="modal">Começar agora!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <section class="form-section">
     <div class="container">
-      <h1 class="text-center mb-4 text-primary">Crie Seu Currículo em Minutos</h1>
-      <p class="text-center mb-5 text-muted">Preencha os campos e veja seu currículo ganhar vida. Salve, edite e baixe em PDF!</p>
+      <h1 class="text-center mb-4 text-primary animate__animated animate__fadeIn">Crie Seu Currículo em Minutos</h1>
+      <p class="text-center mb-5 text-muted animate__animated animate__fadeIn">Preencha os campos e veja seu currículo ganhar vida. Salve, edite e baixe em PDF!</p>
       <div class="row g-4">
         <div class="col-lg-4 col-12">
-          <div class="tips-panel p-4 bg-light rounded-3 shadow-sm">
+          <div class="tips-panel p-4 rounded-3 shadow-sm animate__animated animate__fadeInLeft">
             <h3 class="h5 fw-bold text-primary mb-3">Dicas para Seu Currículo</h3>
             <div id="templateTips"></div>
           </div>
-           <!-- Seção de Doação -->
-<section id="doacao" style="padding: 60px 20px; background: #0f172a; color: #e2e8f0; text-align: center;">
-  <h2 style="font-size: 2rem; color: #38bdf8; margin-bottom: 20px;">
-    Ajude o geradorcurriculo.com 💖
-  </h2>
-  <p style="font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; margin-inline: auto;">
-    Se o gerador de currículo foi útil para você, considere apoiar o projeto com qualquer valor. Sua ajuda nos permite manter o site gratuito e funcionando para todos! 🚀
-  </p>
-  <a href="http://link.mercadopago.com.br/geradorcurriculo" target="_blank" style="display: inline-block; padding: 14px 28px; background: linear-gradient(90deg, #14b8a6, #3b82f6); color: white; border-radius: 12px; font-size: 1.2rem; text-decoration: none; transition: transform 0.2s;">
-    💰 Fazer uma doação
-  </a>
-  <p style="margin-top: 20px; font-size: 0.9rem; color: #94a3b8;">Pagamento seguro via Mercado Pago</p>
-</section>
+          <section id="doacao" class="mt-4">
+            <h2 class="h4 text-white mb-3">Ajude o geradorcurriculo.com 💖</h2>
+            <p class="text-white mb-4">Se nosso gerador foi útil, considere apoiar com uma doação. Sua ajuda mantém o site gratuito para todos! 🚀</p>
+            <a href="http://link.mercadopago.com.br/geradorcurriculo" target="_blank" class="btn btn-primary">💰 Fazer uma doação</a>
+            <p class="text-white mt-3 small">Pagamento seguro via Mercado Pago</p>
+          </section>
         </div>
         <div class="col-lg-8 col-12">
           <div class="row g-4">
             <div class="col-12">
-              <div class="progress mb-4">
-                <div id="formProgress" class="progress-bar bg-primary" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress mb-4 animate__animated animate__fadeIn">
+                <div id="formProgress" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div>
             <div class="col-lg-6 col-12">
               <form id="resumeForm" class="needs-validation" novalidate>
-                <div class="mb-4 position-relative">
-                  <label for="template" class="form-label fw-bold">Modelo do Currículo <i class="bi bi-info-circle" data-bs-toggle="tooltip" title="Escolha o modelo ideal para sua vaga"></i></label>
+                <div class="mb-4 position-relative animate__animated animate__fadeIn">
+                  <label for="template" class="form-label fw-bold">Modelo do Currículo <i class="bi bi-info-circle" data-bs-toggle="popover" data-bs-content="Escolha o modelo ideal para sua vaga" data-bs-trigger="hover"></i></label>
                   <select id="template" name="template" class="form-select" onchange="updateTemplateFields()" required aria-describedby="templateHelp">
                     <option value="jovem-aprendiz">Jovem Aprendiz</option>
                     <option value="primeiro-emprego">Primeiro Emprego</option>
@@ -152,68 +353,67 @@
                   </select>
                   <div class="invalid-feedback">Selecione um modelo.</div>
                 </div>
-                <div class="mb-4 position-relative">
+                <div class="mb-4 position-relative animate__animated animate__fadeIn">
                   <label for="fullName" class="form-label fw-bold">Nome Completo</label>
                   <input type="text" id="fullName" name="fullName" class="form-control" required aria-describedby="fullNameHelp" oninput="updateResume()">
-                  <div class="invalid-feedback">Digite seu nome completo.</div>
-                  <small id="fullNameHelp" class="form-text text-muted">Ex.: João Silva Santos</small>
+                  <div class="">Digite seu nome completo.</div>
+                  <small id="fullNameHelp" class="form-text ">Ex.: João Silva Santos</small>
                 </div>
-                <div class="mb-4 position-relative">
+                <div class="mb-4 position-relative animate__animated animate__fadeIn">
                   <label for="email" class="form-label fw-bold">E-mail</label>
                   <input type="email" id="email" name="email" class="form-control" required aria-describedby="emailHelp" oninput="updateResume()">
-                  <div class="invalid-feedback">Digite um e-mail válido.</div>
-                  <small id="emailHelp" class="form-text text-muted">Ex.: joao.silva@email.com</small>
+                  <div class="">Digite um e-mail válido.</div>
+                  <small id="emailHelp" class="form-text ">Ex.: joao.silva@email.com</small>
                 </div>
-                <div class="mb-4 position-relative">
+                <div class="mb-4 position-relative animate__animated animate__fadeIn">
                   <label for="phone" class="form-label fw-bold">Telefone</label>
                   <input type="tel" id="phone" name="phone" class="form-control" aria-describedby="phoneHelp" oninput="updateResume()">
-                  <small id="phoneHelp" class="form-text text-muted">Ex.: (11) 99999-9999</small>
+                  <small id="phoneHelp" class="form-text ">Ex.: (11) 99999-9999</small>
                 </div>
-                <div class="mb-4 position-relative">
+                <div class="mb-4 position-relative animate__animated animate__fadeIn">
                   <label for="address" class="form-label fw-bold">Endereço</label>
                   <input type="text" id="address" name="address" class="form-control" aria-describedby="addressHelp" oninput="updateResume()">
-                  <small id="addressHelp" class="form-text text-muted">Ex.: Rua das Flores, 123</small>
+                  <small id="addressHelp" class="form-text ">Ex.: Rua das Flores, 123</small>
                 </div>
-                <div class="mb-4 position-relative">
+                <div class="mb-4 position-relative animate__animated animate__fadeIn">
                   <label for="city" class="form-label fw-bold">Cidade, Estado, CEP</label>
                   <input type="text" id="city" name="city" class="form-control" aria-describedby="cityHelp" oninput="updateResume()">
-                  <small id="cityHelp" class="form-text text-muted">Ex.: São Paulo, SP, 01234-567</small>
+                  <small id="cityHelp" class="form-text ">Ex.: São Paulo, SP, 01234-567</small>
                 </div>
-                <div class="mb-4">
-                  <label for="objective" class="form-label fw-bold">Objetivo <i class="bi bi-info-circle" data-bs-toggle="tooltip" title="Descreva seu objetivo em 1-2 frases curtas"></i></label>
+                <div class="mb-4 animate__animated animate__fadeIn">
                   <textarea id="objective" name="objective" class="form-control" rows="3" oninput="updateResume()" placeholder="Ex.: Buscar uma oportunidade como jovem aprendiz"></textarea>
                 </div>
-                <div class="mb-4">
+                <div class="mb-4 animate__animated animate__fadeIn">
                   <label class="form-label fw-bold">Formação Acadêmica</label>
+                  <input type="text" id="education" name="education" class="form-control" aria-describedby="educationHelp" oninput="updateResume()">
                   <div id="educationFields">
-                    <div class="education-entry mb-3 d-flex align-items-center">
+                    <div class="education-entry mb-3 d-flex align-items-center animate-in">
                       <textarea class="form-control" name="education" rows="2" oninput="updateResume()" placeholder="Ex.: Ensino Médio - Colégio XYZ, 2023"></textarea>
                       <button type="button" class="btn btn-outline-danger btn-sm ms-2" onclick="removeField(this)">X</button>
                     </div>
                   </div>
                   <button type="button" class="btn btn-outline-primary btn-sm" onclick="addEducationField()">+ Adicionar Formação</button>
                 </div>
-                <div class="mb-4">
+                <div class="mb-4 animate__animated animate__fadeIn">
                   <label class="form-label fw-bold">Experiência Profissional</label>
+                  <input type="text" id="experience" name="experience" class="form-control" aria-describedby="experienceHelp" oninput="updateResume()">
                   <div id="experienceFields">
-                    <div class="experience-entry mb-3 d-flex align-items-center">
+                    <div class="experience-entry mb-3 d-flex align-items-center animate-in">
                       <textarea class="form-control" name="experience" rows="2" oninput="updateResume()" placeholder="Ex.: Estágio em Vendas - Empresa ABC, 2023"></textarea>
                       <button type="button" class="btn btn-outline-danger btn-sm ms-2" onclick="removeField(this)">X</button>
                     </div>
                   </div>
                   <button type="button" class="btn btn-outline-primary btn-sm" onclick="addExperienceField()">+ Adicionar Experiência</button>
                 </div>
-                <div class="mb-4">
-                  <label for="skills" class="form-label fw-bold">Habilidades <i class="bi bi-info-circle" data-bs-toggle="tooltip" title="Liste suas habilidades, uma por linha"></i></label>
-                  <textarea id="skills" name="skills" class="form-control" rows="3" oninput="updateResume()" placeholder="Ex.: Trabalho em equipe
-Comunicação"></textarea>
+                <div class="mb-4 animate__animated animate__fadeIn">
+                  <label for="skills" class="form-label fw-bold">Habilidades <i class="bi bi-info-circle" data-bs-toggle="popover" data-bs-content="Liste suas habilidades, uma por linha" data-bs-trigger="hover"></i></label>
+                  <textarea id="skills" name="skills" class="form-control" rows="3" oninput="updateResume()" placeholder="Ex.: Trabalho em equipe\nComunicação"></textarea>
                 </div>
-                <div class="mb-4">
-                  <label for="languages" class="form-label fw-bold">Idiomas <i class="bi bi-info-circle" data-bs-toggle="tooltip" title="Liste seus idiomas e nível de proficiência, um por linha"></i></label>
-                  <textarea id="languages" name="languages" class="form-control" rows="3" oninput="updateResume()" placeholder="Ex.: Inglês - Avançado
-Espanhol - Intermediário"></textarea>
+                <div class="mb-4 animate__animated animate__fadeIn">
+                  <label for="languages" class="form-label fw-bold">Idiomas <i class="bi bi-info-circle" data-bs-toggle="popover" data-bs-content="Liste seus idiomas e nível de proficiência, um por linha" data-bs-trigger="hover"></i></label>
+                  <textarea id="languages" name="languages" class="form-control" rows="3" oninput="updateResume()" placeholder="Ex.: Inglês - Avançado\nEspanhol - Intermediário"></textarea>
                 </div>
-                <div class="mb-4">
+                <div class="mb-4 animate__animated animate__fadeIn">
                   <label for="style" class="form-label fw-bold">Estilo do Currículo</label>
                   <select id="style" name="style" class="form-select" onchange="updateResume()">
                     <option value="classic">Clássico</option>
@@ -222,17 +422,15 @@ Espanhol - Intermediário"></textarea>
                   </select>
                 </div>
                 <div class="d-flex gap-3 flex-wrap">
-                  <button id="btnDownload" type="button" class="btn btn-primary btn-lg px-4 py-2">
-  Baixar Currículo em PDF
-</button>
+                  <button id="btnDownload" type="button" class="btn btn-primary btn-lg px-4 py-2">Baixar Currículo em PDF</button>
                   <button type="button" class="btn btn-outline-secondary btn-lg px-4 py-2" onclick="resetForm()">Limpar Formulário</button>
                   <button type="button" class="btn btn-outline-primary btn-lg px-4 py-2" onclick="zoomPreview()">Zoom na Pré-visualização</button>
                 </div>
               </form>
             </div>
             <div class="col-lg-6 col-12">
-              <div class="preview-container">
-                <div id="resumePreview" class="p-4 bg-white rounded-3 shadow-sm resume-preview"></div>
+              <div class="preview-container animate__animated animate__fadeInRight">
+                <div id="resumePreview" class="p-4 rounded-3 shadow-sm resume-preview"></div>
               </div>
             </div>
           </div>
@@ -242,17 +440,7 @@ Espanhol - Intermediário"></textarea>
     <button id="scrollTop" class="btn btn-primary btn-sm scroll-top" aria-label="Voltar ao topo"><i class="bi bi-arrow-up"></i></button>
   </section>
 
-
-
-
-
-
-
-
-
-
-
-  <footer class="footer-section py-4 bg-dark text-white">
+  <footer class="footer-section py-4">
     <div class="container">
       <div class="row g-4">
         <div class="col-md-4">
@@ -278,7 +466,7 @@ Espanhol - Intermediário"></textarea>
         <div class="col-md-4">
           <h5 class="fw-bold">Siga-nos</h5>
           <p>
-              <a href="https://www.instagram.com/geradorcurriculo/" class="text-warning text-decoration-none me-2"><i class="bi bi-instagram"></i> Instagram</a>
+            <a href="https://www.instagram.com/geradorcurriculo/" class="text-warning text-decoration-none me-2"><i class="bi bi-instagram"></i> Instagram</a>
           </p>
         </div>
       </div>
@@ -286,510 +474,508 @@ Espanhol - Intermediário"></textarea>
     </div>
   </footer>
 
-
-
-
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const { jsPDF } = window.jspdf;
+      const form = document.getElementById('resumeForm');
+      const preview = document.getElementById('resumePreview');
+      const templateSelect = document.getElementById('template');
+      const styleSelect = document.getElementById('style');
+      const progressBar = document.getElementById('formProgress');
+      const tipsPanel = document.getElementById('templateTips');
+      const scrollTopBtn = document.getElementById('scrollTop');
+      const achievement = document.getElementById('achievement');
+      const achievementText = document.getElementById('achievementText');
+      let zoomLevel = 1;
+      let completedFields = new Set();
 
-    
-  document.addEventListener('DOMContentLoaded', () => {
-  const { jsPDF } = window.jspdf;
-  const form = document.getElementById('resumeForm');
-  const preview = document.getElementById('resumePreview');
-  const templateSelect = document.getElementById('template');
-  const styleSelect = document.getElementById('style');
-  const progressBar = document.getElementById('formProgress');
-  const tipsPanel = document.getElementById('templateTips');
-  const scrollTopBtn = document.getElementById('scrollTop');
-  let zoomLevel = 1;
+      // Initialize popovers
+      const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+      popoverTriggerList.forEach(el => new bootstrap.Popover(el));
 
-  // Initialize tooltips
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-  tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
-
-  // Debounce function
-  const debounce = (func, wait) => {
-    let timeout;
-    return (...args) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-  };
-
-  // Load saved data from localStorage
-  const loadSavedData = () => {
-    const savedData = JSON.parse(localStorage.getItem('resumeData') || '{}');
-    Object.keys(savedData).forEach(key => {
-      const element = document.getElementById(key);
-      if (element) element.value = savedData[key];
-    });
-    const educationFields = savedData.education || [''];
-    const experienceFields = savedData.experience || [''];
-    educationFields.forEach((val, i) => {
-      if (i > 0) addEducationField();
-      document.getElementsByName('education')[i].value = val;
-    });
-    experienceFields.forEach((val, i) => {
-      if (i > 0) addExperienceField();
-      document.getElementsByName('experience')[i].value = val;
-    });
-    updateResume();
-  };
-
-  // Save data to localStorage
-  const saveData = () => {
-    const data = {
-      fullName: document.getElementById('fullName').value,
-      email: document.getElementById('email').value,
-      phone: document.getElementById('phone').value,
-      address: document.getElementById('address').value,
-      city: document.getElementById('city').value,
-      objective: document.getElementById('objective').value,
-      skills: document.getElementById('skills').value,
-      languages: document.getElementById('languages').value,
-      template: templateSelect.value,
-      style: styleSelect.value,
-      education: Array.from(document.getElementsByName('education')).map(el => el.value),
-      experience: Array.from(document.getElementsByName('experience')).map(el => el.value),
-    };
-    localStorage.setItem('resumeData', JSON.stringify(data));
-  };
-
-  // Update template fields and tips
-  window.updateTemplateFields = () => {
-    const template = templateSelect.value;
-    const objective = document.getElementById('objective');
-    const skills = document.getElementById('skills');
-    const languages = document.getElementById('languages');
-    const education = document.getElementsByName('education')[0];
-    const experience = document.getElementsByName('experience')[0];
-
-    const templates = {
-      'jovem-aprendiz': {
-        objective: 'Busco uma oportunidade como Jovem Aprendiz para desenvolver habilidades profissionais.',
-        education: 'Ensino Médio - Colégio XYZ, 2023',
-        experience: 'Estágio voluntário em escola, 2024',
-        skills: 'Proatividade\nTrabalho em equipe',
-        languages: 'Inglês - Básico',
-        tips: '<p><strong>Jovem Aprendiz:</strong> Destaque sua vontade de aprender e habilidades interpessoais. Inclua idiomas como "Inglês - Básico" se aplicável.</p>'
-      },
-      'primeiro-emprego': {
-        objective: 'Obter minha primeira experiência profissional com disposição para aprender.',
-        education: 'Ensino Médio - Escola ABC, 2023',
-        experience: 'Projeto comunitário, 2023',
-        skills: 'Comunicação\nOrganização',
-        languages: 'Inglês - Intermediário',
-        tips: '<p><strong>Primeiro Emprego:</strong> Foque em projetos escolares ou voluntários. Liste idiomas com nível de proficiência.</p>'
-      },
-      'aux-servicos-gerais': {
-        objective: 'Atuar como Auxiliar de Serviços Gerais com eficiência e organização.',
-        education: 'Ensino Fundamental - Escola DEF, 2022',
-        experience: 'Limpeza em empresa local, 2023-2024',
-        skills: 'Organização\nAtenção aos detalhes',
-        languages: 'Espanhol - Básico',
-        tips: '<p><strong>Auxiliar de Serviços Gerais:</strong> Enfatize habilidades práticas. Idiomas são um diferencial, mesmo em nível básico.</p>'
-      },
-      'aux-producao': {
-        objective: 'Contribuir como Auxiliar de Produção com foco em qualidade e eficiência.',
-        education: 'Curso Técnico em Mecânica - SENAI, 2024',
-        experience: 'Produção em fábrica, 2024',
-        skills: 'Operação de máquinas\nControle de qualidade',
-        languages: 'Inglês - Intermediário',
-        tips: '<p><strong>Auxiliar de Produção:</strong> Mencione cursos técnicos e idiomas relevantes para a área.</p>'
-      },
-      'estagiario': {
-        objective: 'Desenvolver habilidades como estagiário em TI.',
-        education: 'Curso Técnico em Informática - ETEC, 2024',
-        experience: 'Treinamento em curso técnico, 2024',
-        skills: 'Aprendizado rápido\nBásico em Python',
-        languages: 'Inglês - Avançado',
-        tips: '<p><strong>Estagiário:</strong> Destaque formações técnicas e idiomas, como "Inglês - Avançado", para áreas técnicas.</p>'
+      // Show tutorial modal on first load
+      if (!localStorage.getItem('tutorialShown')) {
+        const tutorialModal = new bootstrap.Modal(document.getElementById('tutorialModal'));
+        tutorialModal.show();
+        localStorage.setItem('tutorialShown', 'true');
       }
-    };
 
-    objective.value = templates[template].objective;
-    education.value = templates[template].education;
-    experience.value = templates[template].experience;
-    skills.value = templates[template].skills;
-    languages.value = templates[template].languages;
-    tipsPanel.innerHTML = templates[template].tips;
-    updateResume();
-  };
+      // Debounce function
+      const debounce = (func, wait) => {
+        let timeout;
+        return (...args) => {
+          clearTimeout(timeout);
+          timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+      };
 
-  // Add education field
-  window.addEducationField = () => {
-    const container = document.getElementById('educationFields');
-    const entry = document.createElement('div');
-    entry.className = 'education-entry mb-3 d-flex align-items-center animate-in';
-    entry.innerHTML = `
-      <textarea class="form-control" name="education" rows="2" oninput="updateResume()" placeholder="Ex.: Ensino Médio - Colégio XYZ, 2023"></textarea>
-      <button type="button" class="btn btn-outline-danger btn-sm ms-2" onclick="removeField(this)" aria-label="Remover formação">X</button>
-    `;
-    container.appendChild(entry);
-    setTimeout(() => entry.classList.add('show'), 10);
-    saveData();
-  };
+      // Show achievement
+      const showAchievement = (text) => {
+        achievementText.textContent = text;
+        achievement.classList.add('show');
+        setTimeout(() => achievement.classList.remove('show'), 3500);
+      };
 
-  // Add experience field
-  window.addExperienceField = () => {
-    const container = document.getElementById('experienceFields');
-    const entry = document.createElement('div');
-    entry.className = 'experience-entry mb-3 d-flex align-items-center animate-in';
-    entry.innerHTML = `
-      <textarea class="form-control" name="experience" rows="2" oninput="updateResume()" placeholder="Ex.: Estágio em Vendas - Empresa ABC, 2023"></textarea>
-      <button type="button" class="btn btn-outline-danger btn-sm ms-2" onclick="removeField(this)" aria-label="Remover experiência">X</button>
-    `;
-    container.appendChild(entry);
-    setTimeout(() => entry.classList.add('show'), 10);
-    saveData();
-  };
+      // Load saved data
+      const loadSavedData = () => {
+        const savedData = JSON.parse(localStorage.getItem('resumeData') || '{}');
+        Object.keys(savedData).forEach(key => {
+          const element = document.getElementById(key);
+          if (element) element.value = savedData[key];
+        });
+        const educationFields = savedData.education || [''];
+        const experienceFields = savedData.experience || [''];
+        educationFields.forEach((val, i) => {
+          if (i > 0) addEducationField();
+          document.getElementsByName('education')[i].value = val;
+        });
+        experienceFields.forEach((val, i) => {
+          if (i > 0) addExperienceField();
+          document.getElementsByName('experience')[i].value = val;
+        });
+        updateResume();
+      };
 
-  // Remove field
-  window.removeField = (btn) => {
-    const entry = btn.parentElement;
-    entry.classList.remove('show');
-    setTimeout(() => {
-      entry.remove();
-      updateResume();
-    }, 300);
-  };
+      // Save data
+      const saveData = () => {
+        const data = {
+          fullName: document.getElementById('fullName').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          address: document.getElementById('address').value,
+          city: document.getElementById('city').value,
+          objective: document.getElementById('objective').value,
+          skills: document.getElementById('skills').value,
+          languages: document.getElementById('languages').value,
+          template: templateSelect.value,
+          style: styleSelect.value,
+          education: Array.from(document.getElementsByName('education')).map(el => el.value),
+          experience: Array.from(document.getElementsByName('experience')).map(el => el.value),
+        };
+        localStorage.setItem('resumeData', JSON.stringify(data));
+      };
 
-  // Update resume preview
-  const updateResume = debounce(() => {
-    const fullName = document.getElementById('fullName').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const address = document.getElementById('address').value;
-    const city = document.getElementById('city').value;
-    const objective = document.getElementById('objective').value;
-    const skills = document.getElementById('skills').value.split('\n').map(s => `<li>${s}</li>`).join('');
-    const languages = document.getElementById('languages').value.split('\n').map(s => `<li>${s}</li>`).join('');
-    const education = Array.from(document.getElementsByName('education')).map(el => `<li>${el.value}</li>`).join('');
-    const experience = Array.from(document.getElementsByName('experience')).map(el => `<li>${el.value}</li>`).join('');
-    const style = styleSelect.value;
+      // Update template fields and tips
+      window.updateTemplateFields = () => {
+        const template = templateSelect.value;
+        const objective = document.getElementById('objective');
+        const skills = document.getElementById('skills');
+        const languages = document.getElementById('languages');
+        const education = document.getElementsByName('education')[0];
+        const experience = document.getElementsByName('experience')[0];
 
-    preview.className = `p-4 bg-white rounded-3 shadow-sm resume-preview ${style}`;
-    preview.innerHTML = `
-      <h1>${fullName || 'Seu Nome'}</h1>
-      <p>${email || 'seu.email@example.com'} | ${phone || '(11) 99999-9999'} | ${address || 'Rua Exemplo, 123'} | ${city || 'Cidade, Estado, CEP'}</p>
-      <h2>Objetivo</h2>
-      <p>${objective || 'Seu objetivo profissional'}</p>
-      <h2>Formação Acadêmica</h2>
-      <ul>${education || '<li>Sua formação</li>'}</ul>
-      <h2>Experiência Profissional</h2>
-      <ul>${experience || '<li>Sua experiência</li>'}</ul>
-      <h2>Habilidades</h2>
-      <ul>${skills || '<li>Suas habilidades</li>'}</ul>
-      <h2>Idiomas</h2>
-      <ul>${languages || '<li>Seus idiomas</li>'}</ul>
-    `;
+        const templates = {
+          'jovem-aprendiz': {
+            objective: 'Busco uma oportunidade como Jovem Aprendiz para desenvolver habilidades profissionais.',
+            education: 'Ensino Médio - Colégio XYZ, 2023',
+            experience: 'Estágio voluntário em escola, 2024',
+            skills: 'Proatividade\nTrabalho em equipe',
+            languages: 'Inglês - Básico',
+            tips: '<p><strong>Jovem Aprendiz:</strong> Destaque sua vontade de aprender e habilidades interpessoais. Inclua idiomas como "Inglês - Básico" se aplicável.</p>'
+          },
+          'primeiro-emprego': {
+            objective: 'Obter minha primeira experiência profissional com disposição para aprender.',
+            education: 'Ensino Médio - Escola ABC, 2023',
+            experience: 'Projeto comunitário, 2023',
+            skills: 'Comunicação\nOrganização',
+            languages: 'Inglês - Intermediário',
+            tips: '<p><strong>Primeiro Emprego:</strong> Foque em projetos escolares ou voluntários. Liste idiomas com nível de proficiência.</p>'
+          },
+          'aux-servicos-gerais': {
+            objective: 'Atuar como Auxiliar de Serviços Gerais com eficiência e organização.',
+            education: 'Ensino Fundamental - Escola DEF, 2022',
+            experience: 'Limpeza em empresa local, 2023-2024',
+            skills: 'Organização\nAtenção aos detalhes',
+            languages: 'Espanhol - Básico',
+            tips: '<p><strong>Auxiliar de Serviços Gerais:</strong> Enfatize habilidades práticas. Idiomas são um diferencial, mesmo em nível básico.</p>'
+          },
+          'aux-producao': {
+            objective: 'Contribuir como Auxiliar de Produção com foco em qualidade e eficiência.',
+            education: 'Curso Técnico em Mecânica - SENAI, 2024',
+            experience: 'Produção em fábrica, 2024',
+            skills: 'Operação de máquinas\nControle de qualidade',
+            languages: 'Inglês - Intermediário',
+            tips: '<p><strong>Auxiliar de Produção:</strong> Mencione cursos técnicos e idiomas relevantes para a área.</p>'
+          },
+          'estagiario': {
+            objective: 'Desenvolver habilidades como estagiário em TI.',
+            education: 'Curso Técnico em Informática - ETEC, 2024',
+            experience: 'Treinamento em curso técnico, 2024',
+            skills: 'Aprendizado rápido\nBásico em Python',
+            languages: 'Inglês - Avançado',
+            tips: '<p><strong>Estagiário:</strong> Destaque formações técnicas e idiomas, como "Inglês - Avançado", para áreas técnicas.</p>'
+          }
+        };
 
-    // Update progress bar
-    const fields = ['fullName', 'email', 'phone', 'address', 'city', 'objective', 'skills', 'languages'];
-    const filled = fields.filter(id => document.getElementById(id).value.trim()).length +
-      document.getElementsByName('education').length +
-      document.getElementsByName('experience').length;
-    const total = fields.length + 2;
-    progressBar.style.width = `${(filled / total) * 100}%`;
-    progressBar.setAttribute('aria-valuenow', filled);
+        objective.value = templates[template].objective;
+        education.value = templates[template].education;
+        experience.value = templates[template].experience;
+        skills.value = templates[template].skills;
+        languages.value = templates[template].languages;
+        tipsPanel.innerHTML = templates[template].tips;
+        updateResume();
+        if (!completedFields.has('template')) {
+          completedFields.add('template');
+          showAchievement('Modelo Escolhido!');
+        }
+      };
 
-    saveData();
-  }, 300);
+      // Add education field
+      window.addEducationField = () => {
+        const container = document.getElementById('educationFields');
+        const entry = document.createElement('div');
+        entry.className = 'education-entry mb-3 d-flex align-items-center animate-in';
+        entry.innerHTML = `
+          <textarea class="form-control" name="education" rows="2" oninput="updateResume()" placeholder="Ex.: Ensino Médio - Colégio XYZ, 2023"></textarea>
+          <button type="button" class="btn btn-outline-danger btn-sm ms-2" onclick="removeField(this)" aria-label="Remover formação">X</button>
+        `;
+        container.appendChild(entry);
+        setTimeout(() => entry.classList.add('show'), 10);
+        saveData();
+        if (!completedFields.has('education')) {
+          completedFields.add('education');
+          showAchievement('Formação Adicionada!');
+        }
+      };
 
-  // Generate PDF with optimized layout, no overlaps, and improved space usage
-window.generatePDF = () => {
-  if (!form.checkValidity()) {
-    form.classList.add('was-validated');
-    return;
-  }
+      // Add experience field
+      window.addExperienceField = () => {
+        const container = document.getElementById('experienceFields');
+        const entry = document.createElement('div');
+        entry.className = 'experience-entry mb-3 d-flex align-items-center animate-in';
+        entry.innerHTML = `
+          <textarea class="form-control" name="experience" rows="2" oninput="updateResume()" placeholder="Ex.: Estágio em Vendas - Empresa ABC, 2023"></textarea>
+          <button type="button" class="btn btn-outline-danger btn-sm ms-2" onclick="removeField(this)" aria-label="Remover experiência">X</button>
+        `;
+        container.appendChild(entry);
+        setTimeout(() => entry.classList.add('show'), 10);
+        saveData();
+        if (!completedFields.has('experience')) {
+          completedFields.add('experience');
+          showAchievement('Experiência Adicionada!');
+        }
+      };
 
-  const doc = new jsPDF();
-  const style = styleSelect.value;
-  const pageWidth = 210, pageHeight = 297;
-  const margin = 15;
-  const maxWidth = pageWidth - 2 * margin;
-  let y = 20;
+      // Remove field
+      window.removeField = (btn) => {
+        const entry = btn.parentElement;
+        entry.classList.remove('show');
+        setTimeout(() => {
+          entry.remove();
+          updateResume();
+        }, 300);
+      };
 
-  const font = 'helvetica';
+      // Update resume preview
+      const updateResume = debounce(() => {
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+        const city = document.getElementById('city').value;
+        const objective = document.getElementById('objective').value;
+        const skills = document.getElementById('skills').value.split('\n').map(s => `<li>${s}</li>`).join('');
+        const languages = document.getElementById('languages').value.split('\n').map(s => `<li>${s}</li>`).join('');
+        const education = Array.from(document.getElementsByName('education')).map(el => `<li>${el.value}</li>`).join('');
+        const experience = Array.from(document.getElementsByName('experience')).map(el => `<li>${el.value}</li>`).join('');
+        const style = styleSelect.value;
 
-  const fullName = document.getElementById('fullName').value || 'Seu Nome';
-  const email = document.getElementById('email').value || 'seu@email.com';
-  const phone = document.getElementById('phone').value || '(00) 00000-0000';
-  const address = document.getElementById('address').value || 'Rua Exemplo';
-  const city = document.getElementById('city').value || 'Cidade/Estado';
-  const objective = document.getElementById('objective').value || 'Seu objetivo profissional';
-  const education = Array.from(document.getElementsByName('education')).map(el => el.value).filter(v => v.trim()) || ['Sua formação'];
-  const experience = Array.from(document.getElementsByName('experience')).map(el => el.value).filter(v => v.trim()) || ['Sua experiência'];
-  const skills = document.getElementById('skills').value.split('\n').filter(v => v.trim()) || ['Suas habilidades'];
-  const languages = document.getElementById('languages').value.split('\n').filter(v => v.trim()) || ['Seus idiomas'];
+        preview.className = `p-4 rounded-3 shadow-sm resume-preview ${style} animate__animated animate__fadeIn`;
+        preview.innerHTML = `
+          <h1>${fullName || 'Seu Nome'}</h1>
+          <p>${email || 'seu.email@example.com'} | ${phone || '(11) 99999-9999'} | ${address || 'Rua Exemplo, 123'} | ${city || 'Cidade, Estado, CEP'}</p>
+          <h2>Objetivo</h2>
+          <p>${objective || 'Seu objetivo profissional'}</p>
+          <h2>Formação Acadêmica</h2>
+          <ul>${education || '<li>Sua formação</li>'}</ul>
+          <h2>Experiência Profissional</h2>
+          <ul>${experience || '<li>Sua experiência</li>'}</ul>
+          <h2>Habilidades</h2>
+          <ul>${skills || '<li>Suas habilidades</li>'}</ul>
+          <h2>Idiomas</h2>
+          <ul>${languages || '<li>Seus idiomas</li>'}</ul>
+        `;
 
-  const checkPageOverflow = (extra = 10) => {
-    if (y + extra > pageHeight - 15) {
-      doc.addPage();
-      y = 20;
-    }
-  };
+        // Update progress bar
+        const fields = ['fullName', 'email', 'phone', 'address', 'city', 'objective', 'skills', 'languages'];
+        const filled = fields.filter(id => document.getElementById(id).value.trim()).length +
+          document.getElementsByName('education').length +
+          document.getElementsByName('experience').length;
+        const total = fields.length + 2;
+        progressBar.style.width = `${(filled / total) * 100}%`;
+        progressBar.setAttribute('aria-valuenow', filled);
 
-  const drawSection = (title, items) => {
-    y += 16;
+        // Check for achievements
+        fields.forEach(id => {
+          if (document.getElementById(id).value.trim() && !completedFields.has(id)) {
+            completedFields.add(id);
+            showAchievement(`${id.charAt(0).toUpperCase() + id.slice(1)} Preenchido!`);
+          }
+        });
 
-    doc.setFont(font, 'bold');
-    doc.setFontSize(15);
+        saveData();
+      }, 300);
 
-    if (style === 'classic') doc.setTextColor(0);
-    else if (style === 'modern') doc.setTextColor(0, 48, 135);
-    else if (style === 'invitation') doc.setTextColor(100, 0, 100);
+      // Generate PDF
+      window.generatePDF = () => {
+        if (!form.checkValidity()) {
+          form.classList.add('was-validated');
+          return;
+        }
 
-    doc.text(title, margin, y);
-    y += 10;
+        const doc = new jsPDF();
+        const style = styleSelect.value;
+        const pageWidth = 210, pageHeight = 297;
+        const margin = 15;
+        const maxWidth = pageWidth - 2 * margin;
+        let y = 20;
 
-    doc.setFont(font, 'normal');
-    doc.setFontSize(12);
-    doc.setTextColor(40, 40, 40);
-    items.forEach(item => {
-      const lines = doc.splitTextToSize(`• ${item}`, maxWidth);
-      lines.forEach(line => {
-        checkPageOverflow(8);
-        doc.text(line, margin, y);
-        y += 8;
+        const font = 'helvetica';
+        const fullName = document.getElementById('fullName').value || 'Seu Nome';
+        const email = document.getElementById('email').value || 'seu@email.com';
+        const phone = document.getElementById('phone').value || '(00) 00000-0000';
+        const address = document.getElementById('address').value || 'Rua Exemplo';
+        const city = document.getElementById('city').value || 'Cidade/Estado';
+        const objective = document.getElementById('objective').value || 'Seu objetivo profissional';
+        const education = Array.from(document.getElementsByName('education')).map(el => el.value).filter(v => v.trim()) || ['Sua formação'];
+        const experience = Array.from(document.getElementsByName('experience')).map(el => el.value).filter(v => v.trim()) || ['Sua experiência'];
+        const skills = document.getElementById('skills').value.split('\n').filter(v => v.trim()) || ['Suas habilidades'];
+        const languages = document.getElementById('languages').value.split('\n').filter(v => v.trim()) || ['Seus idiomas'];
+
+        const checkPageOverflow = (extra = 10) => {
+          if (y + extra > pageHeight - 15) {
+            doc.addPage();
+            y = 20;
+          }
+        };
+
+        const drawSection = (title, items) => {
+          y += 16;
+          doc.setFont(font, 'bold');
+          doc.setFontSize(15);
+          doc.setTextColor(style === 'classic' ? 0 : style === 'modern' ? [0, 48, 135] : [100, 0, 100]);
+          doc.text(title, margin, y);
+          y += 10;
+          doc.setFont(font, 'normal');
+          doc.setFontSize(12);
+          doc.setTextColor(40, 40, 40);
+          items.forEach(item => {
+            const lines = doc.splitTextToSize(`• ${item}`, maxWidth);
+            lines.forEach(line => {
+              checkPageOverflow(8);
+              doc.text(line, margin, y);
+              y += 8;
+            });
+          });
+          if (style === 'modern') {
+            y += 4;
+            doc.setDrawColor(200);
+            doc.setLineWidth(0.3);
+            doc.line(margin, y, pageWidth - margin, y);
+          }
+          if (style === 'elegant') {
+            y += 4;
+            doc.setDrawColor(150, 100, 150);
+            doc.setLineWidth(0.2);
+            doc.setLineDashPattern([1, 1], 0);
+            doc.line(margin, y, pageWidth - margin, y);
+            doc.setLineDashPattern([], 0);
+          }
+        };
+
+        // Header
+        if (style === 'elegant') {
+          doc.setFont(font, 'bold');
+          doc.setFontSize(24);
+          doc.setTextColor(100, 0, 100);
+          doc.text(fullName, pageWidth / 2, y, { align: 'center' });
+          y += 14;
+          doc.setFont(font, 'normal');
+          doc.setFontSize(13);
+          doc.setTextColor(90, 90, 90);
+          const contact = `${email} | ${phone} | ${address} | ${city}`;
+          const contactLines = doc.splitTextToSize(contact, maxWidth);
+          contactLines.forEach(line => {
+            doc.text(line, pageWidth / 2, y, { align: 'center' });
+            y += 8;
+          });
+          y += 4;
+          doc.setDrawColor(150, 100, 150);
+          doc.setLineDashPattern([1, 1], 0);
+          doc.line(margin, y, pageWidth - margin, y);
+          doc.setLineDashPattern([], 0);
+          y += 10;
+        } else {
+          doc.setFont(font, 'bold');
+          doc.setFontSize(24);
+          doc.setTextColor(style === 'classic' ? 0 : [0, 48, 135]);
+          doc.text(fullName, margin, y);
+          y += 12;
+          doc.setFont(font, 'normal');
+          doc.setFontSize(13);
+          doc.setTextColor(80, 80, 80);
+          const contact = `${email} | ${phone} | ${address} | ${city}`;
+          const contactLines = doc.splitTextToSize(contact, maxWidth);
+          contactLines.forEach(line => {
+            doc.text(line, margin, y);
+            y += 8;
+          });
+          if (style === 'modern') {
+            y += 4;
+            doc.setDrawColor(0, 48, 135);
+            doc.setLineWidth(1);
+            doc.line(margin, y, pageWidth - margin, y);
+            y += 10;
+          } else {
+            y += 8;
+          }
+        }
+
+        drawSection('Objetivo', [objective]);
+        drawSection('Formação Acadêmica', education);
+        drawSection('Experiência Profissional', experience);
+        drawSection('Habilidades', skills);
+        drawSection('Idiomas', languages);
+
+        // Save PDF
+        doc.save('curriculo.pdf');
+
+        // Google Tag Manager event
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'download_pdf',
+          category: 'PDF',
+          action: 'Download',
+          label: 'Curriculum_Download',
+          user_name: fullName,
+          style: style
+        });
+
+        showAchievement('Currículo Baixado!');
+        scrollParaDoacao();
+      };
+
+      // Reset form
+      window.resetForm = () => {
+        form.reset();
+        document.getElementById('educationFields').innerHTML = `
+          <div class="education-entry mb-3 d-flex align-items-center animate-in">
+            <textarea class="form-control" name="education" rows="2" oninput="updateResume()" placeholder="Ex.: Ensino Médio - Colégio XYZ, 2023"></textarea>
+            <button type="button" class="btn btn-outline-danger btn-sm ms-2" onclick="removeField(this)" aria-label="Remover formação">X</button>
+          </div>
+        `;
+        document.getElementById('experienceFields').innerHTML = `
+          <div class="experience-entry mb-3 d-flex align-items-center animate-in">
+            <textarea class="form-control" name="experience" rows="2" oninput="updateResume()" placeholder="Ex.: Estágio em Vendas - Empresa ABC, 2023"></textarea>
+            <button type="button" class="btn btn-outline-danger btn-sm ms-2" onclick="removeField(this)" aria-label="Remover experiência">X</button>
+          </div>
+        `;
+        localStorage.removeItem('resumeData');
+        completedFields.clear();
+        updateResume();
+      };
+
+      // Zoom preview
+      window.zoomPreview = () => {
+        zoomLevel = zoomLevel === 1 ? 1.1 : 1;
+        preview.classList.toggle('zoom', zoomLevel > 1);
+      };
+
+      // Phone mask
+      const phoneInput = document.getElementById('phone');
+      phoneInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 11) value = value.slice(0, 11);
+        if (value.length <= 11) {
+          value = value.replace(/^(\d{2})(\d)/, '($1) $2');
+          value = value.replace(/(\d{5})(\d)/, '$1-$2');
+        }
+        e.target.value = value;
+        updateResume();
       });
-    });
 
-    if (style === 'modern') {
-      y += 4;
-      doc.setDrawColor(200);
-      doc.setLineWidth(0.3);
-      doc.line(margin, y, pageWidth - margin, y);
-    }
+      // Form validation and input handling
+      form.querySelectorAll('input, textarea, select').forEach(el => {
+        el.addEventListener('input', () => {
+          if (el.checkValidity()) {
+            el.classList.remove('is-invalid');
+            el.classList.add('is-valid');
+          } else {
+            el.classList.remove('is-valid');
+            el.classList.add('is-invalid');
+          }
+          updateResume();
+        });
+      });
 
-    if (style === 'invitation') {
-      y += 4;
-      doc.setDrawColor(150, 100, 150);
-      doc.setLineWidth(0.2);
-      doc.setLineDashPattern([1, 1], 0);
-      doc.line(margin, y, pageWidth - margin, y);
-      doc.setLineDashPattern([], 0);
-    }
-  };
+      // Scroll to top button
+      window.addEventListener('scroll', () => {
+        scrollTopBtn.classList.toggle('show', window.scrollY > 200);
+      });
 
-  // Cabeçalho
-  if (style === 'invitation') {
-    doc.setFont(font, 'bold');
-    doc.setFontSize(24);
-    doc.setTextColor(100, 0, 100);
-    doc.text(fullName, pageWidth / 2, y, { align: 'center' });
-    y += 14;
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
 
-    doc.setFont(font, 'normal');
-    doc.setFontSize(13);
-    doc.setTextColor(90, 90, 90);
-    const contact = `${email} | ${phone} | ${address} | ${city}`;
-    const contactLines = doc.splitTextToSize(contact, maxWidth);
-    contactLines.forEach(line => {
-      doc.text(line, pageWidth / 2, y, { align: 'center' });
-      y += 8;
-    });
+      // Download button
+      document.getElementById('btnDownload').addEventListener('click', () => {
+        generatePDF();
+        setTimeout(() => {
+          const feedbackModal = new bootstrap.Modal(document.getElementById('feedbackModal'));
+          feedbackModal.show();
+        }, 1000);
+      });
 
-    y += 4;
-    doc.setDrawColor(150, 100, 150);
-    doc.setLineDashPattern([1, 1], 0);
-    doc.line(margin, y, pageWidth - margin, y);
-    doc.setLineDashPattern([], 0);
-    y += 10;
-
-  } else {
-    doc.setFont(font, 'bold');
-    doc.setFontSize(24);
-    doc.setTextColor(style === 'classic' ? 0 : 0, 48, 135);
-    doc.text(fullName, margin, y);
-    y += 12;
-
-    doc.setFont(font, 'normal');
-    doc.setFontSize(13);
-    doc.setTextColor(80, 80, 80);
-    const contact = `${email} | ${phone} | ${address} | ${city}`;
-    const contactLines = doc.splitTextToSize(contact, maxWidth);
-    contactLines.forEach(line => {
-      doc.text(line, margin, y);
-      y += 8;
-    });
-
-    if (style === 'modern') {
-      y += 4;
-      doc.setDrawColor(0, 48, 135);
-      doc.setLineWidth(1);
-      doc.line(margin, y, pageWidth - margin, y);
-      y += 10;
-    } else {
-      y += 8;
-    }
-  }
-
-  drawSection('Objetivo', [objective]);
-  drawSection('Formação Acadêmica', education);
-  drawSection('Experiência Profissional', experience);
-  drawSection('Habilidades', skills);
-  drawSection('Idiomas', languages);
-
-  // Salva o PDF
-  doc.save('curriculo.pdf');
-  // 🔥 Aqui envia o evento para o Google Tag Manager
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: 'download_pdf',
-    category: 'PDF',
-    action: 'Download',
-    label: 'Curriculum_Download',
-    user_name: fullName,
-    style: style
-  });
-};
-
-
-
-
-scrollParaDoacao();
-
-
-
-  // Reset form
-  window.resetForm = () => {
-    form.reset();
-    document.getElementById('educationFields').innerHTML = `
-      <div class="education-entry mb-3 d-flex align-items-center">
-        <textarea class="form-control" name="education" rows="2" oninput="updateResume()" placeholder="Ex.: Ensino Médio - Colégio XYZ, 2023"></textarea>
-        <button type="button" class="btn btn-outline-danger btn-sm ms-2" onclick="removeField(this)" aria-label="Remover formação">X</button>
-      </div>
-    `;
-    document.getElementById('experienceFields').innerHTML = `
-      <div class="experience-entry mb-3 d-flex align-items-center">
-        <textarea class="form-control" name="experience" rows="2" oninput="updateResume()" placeholder="Ex.: Estágio em Vendas - Empresa ABC, 2023"></textarea>
-        <button type="button" class="btn btn-outline-danger btn-sm ms-2" onclick="removeField(this)" aria-label="Remover experiência">X</button>
-      </div>
-    `;
-    localStorage.removeItem('resumeData');
-    updateResume();
-  };
-
-  // Zoom preview
-  window.zoomPreview = () => {
-    zoomLevel = zoomLevel === 1 ? 1.1 : 1;
-    preview.classList.toggle('zoom', zoomLevel > 1);
-  };
-
-  // Phone mask
-  const phoneInput = document.getElementById('phone');
-  phoneInput.addEventListener('input', (e) => {
-    let value = e.target.value.replace(/\D/g, '');
-    if (value.length > 11) value = value.slice(0, 11);
-    if (value.length <= 11) {
-      value = value.replace(/^(\d{2})(\d)/, '($1) $2');
-      value = value.replace(/(\d{5})(\d)/, '$1-$2');
-    }
-    e.target.value = value;
-    updateResume();
-  });
-
-  // Form validation and input handling
-  form.querySelectorAll('input, textarea, select').forEach(el => {
-    el.addEventListener('input', () => {
-      if (el.checkValidity()) {
-        el.classList.remove('is-invalid');
-        el.classList.add('is-valid');
-      } else {
-        el.classList.remove('is-valid');
-        el.classList.add('is-invalid');
-      }
-      updateResume();
-    });
-  });
-
-  // Scroll to top button
-  window.addEventListener('scroll', () => {
-    scrollTopBtn.classList.toggle('show', window.scrollY > 200);
-  });
-
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // Initial setup
-  loadSavedData();
-  updateTemplateFields();
-});
-
-// Quando clica no botão, mostra o modal
-document.getElementById("btnDownload").addEventListener("click", () => {
-  generatePDF(); // Gera e baixa o PDF primeiro
-
-  // Depois de um pequeno delay, abre o modal
-  setTimeout(() => {
-    const feedbackModal = new bootstrap.Modal(document.getElementById("feedbackModal"));
-    feedbackModal.show();
-  }, 1000); // tempo de espera para garantir download (ajuste se necessário)
-});
-
-// Quando envia o formulário do modal
-document.getElementById("feedbackForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const name = document.getElementById("username").value.trim();
-  const rating = document.getElementById("rating").value;
-  const comment = document.getElementById("comment").value.trim();
-
-  if (name && rating) {
-    const feedbacks = JSON.parse(localStorage.getItem("userFeedbacks") || "[]");
-    feedbacks.push({
-      name,
-      rating,
-      comment,
-      date: new Date().toLocaleString("pt-BR")
-    });
-    localStorage.setItem("userFeedbacks", JSON.stringify(feedbacks));
-
-    // Fecha o modal
-    const modalInstance = bootstrap.Modal.getInstance(document.getElementById("feedbackModal"));
-    modalInstance.hide();
-
-    // Gera o PDF após o modal fechar
-    setTimeout(() => {
-      generatePDF();
-    }, 500);
-  }
-});
-
-const stars = document.querySelectorAll('#star-rating i');
-  const ratingInput = document.getElementById('rating');
-
-  stars.forEach(star => {
-    star.addEventListener('click', () => {
-      const value = star.getAttribute('data-value');
-      ratingInput.value = value;
-
-      // Atualiza visualmente
-      stars.forEach(s => {
-        s.classList.remove('selected');
-        if (s.getAttribute('data-value') <= value) {
-          s.classList.add('selected');
+      // Feedback form submission
+      document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('username').value.trim();
+        const rating = document.getElementById('rating').value;
+        const comment = document.getElementById('comment').value.trim();
+        if (name && rating) {
+          const feedbacks = JSON.parse(localStorage.getItem('userFeedbacks') || '[]');
+          feedbacks.push({
+            name,
+            rating,
+            comment,
+            date: new Date().toLocaleString('pt-BR')
+          });
+          localStorage.setItem('userFeedbacks', JSON.stringify(feedbacks));
+          const modalInstance = bootstrap.Modal.getInstance(document.getElementById('feedbackModal'));
+          modalInstance.hide();
+          showAchievement('Feedback Enviado!');
         }
       });
+
+      // Star rating
+      const stars = document.querySelectorAll('#star-rating i');
+      const ratingInput = document.getElementById('rating');
+      stars.forEach(star => {
+        star.addEventListener('click', () => {
+          const value = star.getAttribute('data-value');
+          ratingInput.value = value;
+          stars.forEach(s => {
+            s.classList.remove('selected');
+            if (s.getAttribute('data-value') <= value) {
+              s.classList.add('selected');
+            }
+          });
+        });
+      });
+
+      // Scroll to donation section
+      window.scrollParaDoacao = () => {
+        const secaoDoacao = document.getElementById('doacao');
+        if (secaoDoacao) {
+          secaoDoacao.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+
+      // Initial setup
+      loadSavedData();
+      updateTemplateFields();
     });
-  });
-
-
-
-<!-- Scroll automático para doação após download do PDF -->
-function scrollParaDoacao() {
-  const secaoDoacao = document.getElementById('doacao');
-  if (secaoDoacao) {
-    secaoDoacao.scrollIntoView({ behavior: 'smooth' });
-  }
-}
-
-
-
   </script>
 </body>
 </html>

@@ -479,3 +479,19 @@ body {
   transform: scale(1.05);
   box-shadow: 0 0 20px var(--neon-green), 0 0 30px var(--neon-blue);
 }
+
+.neon-green{
+  color: var(--neon-green);
+}
+.neon-blue
+{
+  color: var(--neon-blue);
+}
+.neon-purple {
+  color: var(--neon-purple);
+}
+
+
+
+
+
