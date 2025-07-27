@@ -61,7 +61,7 @@
     .form-control, .form-select {
       border-radius: 10px;
       background: #1e293b;
-      color: #e2e8f0;
+      color: #fff;
       border: 1px solid #475569;
       transition: all 0.3s ease;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -69,7 +69,8 @@
     .form-control:focus, .form-select:focus {
       border-color: #38bdf8;
       box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-      background: #1e293b;
+      background: #fff;
+      color:#000000;
     }
     .btn-primary {
       background: linear-gradient(90deg, #38bdf8, #1e40af);
@@ -218,6 +219,51 @@
       box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
     }
     
+
+    .select-wrapper {
+    position: relative;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #0f172a, #1e40af);
+    padding: 1rem;
+    box-shadow: 0 0 12px #00ff99;
+    color: #000;
+    transition: 0.3s;
+  }
+
+  .select-wrapper:hover {
+    box-shadow: 0 0 20px #00ffcc, 0 0 8px #00ffcc inset;
+  }
+
+  .form-label i {
+    color: #00ffc8;
+    cursor: pointer;
+    margin-left: 6px;
+  }
+
+  select.form-select {
+    background:  #00ffc8;
+    color: #000;
+    border: 1px solid #00ffc8;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: border 0.2s;
+  }
+
+  select.form-select:focus {
+    border-color: #00ffcc;
+    box-shadow: 0 0 10px #00ffcc;
+  }
+
+  option {
+    background-color: #111;
+    color: #fff;
+  }
+
+  .invalid-feedback {
+    color: #ff6b6b;
+  }
   </style>
 </head>
 <body>
@@ -319,7 +365,7 @@
   <section class="form-section">
     <div class="container">
       <h1 class="text-center mb-4 text-primary animate__animated animate__fadeIn">Crie Seu Currículo em Minutos</h1>
-      <p class="text-center mb-5 text-muted animate__animated animate__fadeIn">Preencha os campos e veja seu currículo ganhar vida. Salve, edite e baixe em PDF!</p>
+      <p class="text-center mb-5  animate__animated animate__fadeIn">Preencha os campos e veja seu currículo ganhar vida. Salve, edite e baixe em PDF!</p>
       <div class="row g-4">
         <div class="col-lg-4 col-12">
           <div class="tips-panel p-4 rounded-3 shadow-sm animate__animated animate__fadeInLeft">
@@ -342,17 +388,23 @@
             </div>
             <div class="col-lg-6 col-12">
               <form id="resumeForm" class="needs-validation" novalidate>
-                <div class="mb-4 position-relative animate__animated animate__fadeIn">
-                  <label for="template" class="form-label fw-bold">Modelo do Currículo <i class="bi bi-info-circle" data-bs-toggle="popover" data-bs-content="Escolha o modelo ideal para sua vaga" data-bs-trigger="hover"></i></label>
-                  <select id="template" name="template" class="form-select" onchange="updateTemplateFields()" required aria-describedby="templateHelp">
-                    <option value="jovem-aprendiz">Jovem Aprendiz</option>
-                    <option value="primeiro-emprego">Primeiro Emprego</option>
-                    <option value="aux-servicos-gerais">Auxiliar de Serviços Gerais</option>
-                    <option value="aux-producao">Auxiliar de Produção</option>
-                    <option value="estagiario">Estagiário</option>
-                  </select>
-                  <div class="invalid-feedback">Selecione um modelo.</div>
-                </div>
+                <div class="mb-4 animate__animated animate__fadeIn">
+  <div class="select-wrapper">
+    <label for="template" class="form-label fw-bold text-white">
+      <i class="bi bi-ui-checks-grid me-2"></i>Modelo do Currículo
+      <i class="bi bi-info-circle" tabindex="0" data-bs-toggle="popover" data-bs-content="Escolha o modelo mais adequado para sua vaga e experiência." data-bs-trigger="hover focus"></i>
+    </label>
+    <select id="template" name="template" class="form-select mt-2" onchange="updateTemplateFields()" required aria-describedby="templateHelp">
+      <option value="" disabled selected>🔽 Selecione um modelo</option>
+      <option value="jovem-aprendiz">🧑‍🏫 Jovem Aprendiz</option>
+      <option value="primeiro-emprego">🛠️ Primeiro Emprego</option>
+      <option value="aux-servicos-gerais">🧹 Serviços Gerais</option>
+      <option value="aux-producao">🏭 Produção</option>
+      <option value="estagiario">📚 Estagiário</option>
+    </select>
+    <div class="invalid-feedback">Por favor, selecione um modelo.</div>
+  </div>
+</div>
                 <div class="mb-4 position-relative animate__animated animate__fadeIn">
                   <label for="fullName" class="form-label fw-bold">Nome Completo</label>
                   <input type="text" id="fullName" name="fullName" class="form-control" required aria-describedby="fullNameHelp" oninput="updateResume()">
@@ -971,6 +1023,14 @@
           secaoDoacao.scrollIntoView({ behavior: 'smooth' });
         }
       };
+
+       // Inicializa os popovers
+  document.addEventListener('DOMContentLoaded', function () {
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    popoverTriggerList.map(function (popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl)
+    })
+  });
 
       // Initial setup
       loadSavedData();
