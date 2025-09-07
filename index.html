@@ -37,8 +37,12 @@
     gtag('config', 'AW-17173526751');
   </script>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530320176723847"
+     crossorigin="anonymous"></script>
+
+
   <style>
-    :root {
+    :root { 
       --primary-color: #4f46e5; /* Roxo-azulado vibrante */
       --primary-hover: #4338ca;
       --bg-light: #f9fafb;
@@ -344,6 +348,92 @@
       margin-left: auto;
       
     }
+
+/* Estilos para a Seção de Vagas de Emprego */
+.job-card {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: left;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.job-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+.job-card .company-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+}
+.job-card .job-title {
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+}
+.job-card .job-company {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.btn-apply {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+.btn-apply:hover {
+  background-color: var(--primary-hover);
+  color: #fff;
+}
+
+/* Estilo para o card de "Anuncie Aqui" */
+.advertise-card {
+  background-color: #eef2ff; /* Fundo suave para destaque */
+  border: 2px dashed var(--primary-color);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.advertise-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.15);
+  border-style: solid;
+}
+.advertise-card .icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+.advertise-card h5 {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+.advertise-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+
+
+
+
   </style>
 </head>
 <body>
@@ -362,10 +452,14 @@
           </div>
         </div>
       </div>
-      <div class="row hero-stats justify-content-center g-5" data-aos="fade-up" data-aos-delay="400">
+            <div class="row hero-stats justify-content-center g-5" data-aos="fade-up" data-aos-delay="400">
         <div class="col-6 col-md-3 stat-item">
-          <h3>+600</h3>
-          <p>Downloads em 3 meses</p>
+          <h3 id="downloads-counter">+681</h3>
+          <p>Downloads Realizados</p>
+        </div>
+        <div class="col-6 col-md-3 stat-item">
+          <h3 id="access-counter">--</h3>
+          <p>Acessos ao Site</p>
         </div>
         <div class="col-6 col-md-3 stat-item">
           <h3>98%</h3>
@@ -376,8 +470,30 @@
           <p>Nota dos usuários</p>
         </div>
       </div>
+
+  </section>
+
+  <!-- Seção de Vagas de Emprego / Anuncie Aqui -->
+  <section class="section-padding section-bg">
+    <div class="container text-center">
+        <h2 class="section-title" data-aos="fade-up">Encontre os Melhores Talentos</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Divulgue sua vaga para milhares de profissionais que estão ativamente buscando uma nova carreira.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="advertise-card">
+                    <div class="icon"><i class="bi bi-megaphone-fill"></i></div>
+                    <h5>Anuncie Sua Vaga Aqui</h5>
+                    <p>Entre em contato para destacar sua oportunidade e conectar-se com candidatos qualificados que utilizam nossa plataforma.</p>
+                    <a href="https://wa.me/5511962921323" class="btn btn-primary mt-3">Entrar em Contato</a>
+
+                  </div>
+            </div>
+        </div>
     </div>
   </section>
+
+
+
 
   <!-- Seção Como Funciona -->
   <section class="section-padding">
@@ -563,7 +679,8 @@
           <a href="#" class="footer-brand"><i class=""></i> Gerador de Currículo Inteligente</a>
           <p>Uma ferramenta gratuita e de código aberto, criada para democratizar o acesso a oportunidades de carreira.</p>
         </div>
-        <div class="col-lg-3 col-6">
+
+                <div class="col-lg-3 col-6">
           <h5>Navegação</h5>
           <ul class="list-unstyled">
             <li><a href="create-resume.html">Criar Currículo</a></li>
@@ -571,6 +688,15 @@
             <li><a href="#">Sobre</a></li>
           </ul>
         </div>
+        <div class="col-lg-4 col-6">
+          <h5>Para Empresas</h5>
+          <ul class="list-unstyled">
+            <li><a href="https://wa.me/5511962921323" class="btn btn-primary mt-3">Anuncie sua Vaga</a></li>
+          </ul>
+        </div>
+
+
+        
         <div class="col-lg-4 col-6">
           <h5>Contato & Suporte</h5>
           <p>Precisa de ajuda ou tem uma sugestão?</p>
@@ -592,6 +718,56 @@
     AOS.init({
       duration: 800, // Duração da animação
       once: true, // Animar apenas uma vez
+    });
+
+
+    // --- SCRIPT DOS CONTADORES DINÂMICOS ---
+    document.addEventListener('DOMContentLoaded', function() {
+      const downloadsCounter = document.getElementById('downloads-counter');
+      const accessCounter = document.getElementById('access-counter');
+
+      // --- LÓGICA DO CONTADOR DE ACESSOS ---
+      let visits = localStorage.getItem('siteVisits');
+      if (visits === null) {
+        // Se for a primeira visita do usuário, começa em 1051.
+        visits = 1051;
+      } else {
+        // Se não, incrementa o número de visitas.
+        visits = parseInt(visits) + 1;
+      }
+      // Salva o novo valor no localStorage.
+      localStorage.setItem('siteVisits', visits);
+      // Exibe o valor no elemento HTML.
+      accessCounter.textContent = `+${visits}`;
+
+
+      // --- LÓGICA DO CONTADOR DE DOWNLOADS ---
+      // O número inicial de downloads que você definiu.
+      const initialDownloads = 681;
+      // Pega o número de downloads "extras" que o usuário já fez, salvos no navegador.
+      let userDownloads = localStorage.getItem('userDownloads');
+      
+      if (userDownloads === null) {
+        userDownloads = 0;
+      } else {
+        userDownloads = parseInt(userDownloads);
+      }
+
+      // O total a ser exibido é a soma do valor inicial + os downloads deste usuário.
+      const totalDownloads = initialDownloads + userDownloads;
+      downloadsCounter.textContent = `+${totalDownloads}`;
+
+      // Para simular um download, você pode chamar esta função
+      // quando o usuário clicar no botão de baixar o PDF.
+      // Exemplo: window.incrementDownloads();
+      window.incrementDownloads = function() {
+        let currentDownloads = parseInt(localStorage.getItem('userDownloads') || 0);
+        currentDownloads++;
+        localStorage.setItem('userDownloads', currentDownloads);
+        
+        const newTotal = initialDownloads + currentDownloads;
+        downloadsCounter.textContent = `+${newTotal}`;
+      }
     });
   </script>
 </body>
